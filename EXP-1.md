@@ -44,6 +44,7 @@ x(n)=a^n sin⁡(ωn)
 6.	Stop the program
 
 # MATLAB CODE:
+```
 % GENERATION OF STANDARD DISCRETE-TIME SIGNALS
 
 clc;
@@ -102,7 +103,7 @@ stem(n1, x6, 'filled');
 title('Damped Sinusoidal Signal');
 xlabel('n'); ylabel('Amplitude');
 grid on;
-
+```
 # OUTPUT GRAPH:
 ![WhatsApp Image 2026-03-30 at 3 40 41 PM](https://github.com/user-attachments/assets/5fec06fd-f3bb-47bc-a321-a3869d56c3c0)
 ![WhatsApp Image 2026-03-30 at 3 42 03 PM](https://github.com/user-attachments/assets/17637183-a06e-44e5-8c62-c900fc2deed4)
