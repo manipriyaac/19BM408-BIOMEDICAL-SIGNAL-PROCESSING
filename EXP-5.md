@@ -63,8 +63,55 @@ The steps involved are:
 7.	Verify whether the filter satisfies the given constraints.
 
 # MATLAB CODE :
+```
+clc;
+clear;
+close all;
+
+T = 1; % Sampling period
+
+wp = 0.2*pi;   % Passband frequency
+ws = 0.4*pi;   % Stopband frequency
+
+Ap = 3;        % Passband ripple (dB)
+As = 21.94;    % Stopband attenuation (dB)
+
+% Pre-warping
+Wp = (2/T)*tan(wp/2);
+Ws = (2/T)*tan(ws/2);
+
+% Order and cutoff frequency
+[N, Wn] = buttord(Wp, Ws, Ap, As, 's');
+
+% Analog Butterworth filter
+[b, a] = butter(N, Wn, 's');
+
+% Bilinear transformation
+[bd, ad] = bilinear(b, a, 1/T);
+
+% Frequency response
+[H, w] = freqz(bd, ad, 1024);
+
+% Plot magnitude response
+figure;
+plot(w/pi, abs(H));
+grid on;
+xlabel('Normalized Frequency (\times\pi rad/sample)');
+ylabel('Magnitude |H(w)|');
+title('Magnitude Response of Digital Butterworth LPF');
+
+% Plot phase response
+figure;
+plot(w/pi, angle(H));
+grid on;
+xlabel('Normalized Frequency (\times\pi rad/sample)');
+ylabel('Phase (radians)');
+title('Phase Response of Digital Butterworth LPF');
+```
 
 # OUTPUT GRAPH :
+![WhatsApp Image 2026-03-30 at 3 54 20 PM](https://github.com/user-attachments/assets/2d897f50-51a3-4400-b58a-dcd2ca0a8f9a)
+![WhatsApp Image 2026-03-30 at 3 54 34 PM](https://github.com/user-attachments/assets/9b1cb0d0-25ad-4500-a11a-10eb50c89b97)
 
 # RESULT:
 A digital Butterworth low pass filter satisfying the given constraints was successfully designed using the bilinear transformation method and its frequency response was verified using MATLAB.
