@@ -28,8 +28,41 @@ Where:
 	7)Stop the program
 
 # MATLAB CODE :
+```
+% Computation of DFT of a Discrete-Time Signal
+
+clc;
+clear;
+close all;
+
+% Input discrete-time signal
+x = [1 1 1 1];
+
+% Length of the signal
+N = length(x);
+
+% Compute DFT using FFT
+X = fft(x);
+
+% Display DFT values
+disp('DFT of the given signal is:');
+disp(X);
+
+% Frequency index
+k = 0:N-1;
+
+% Plot magnitude spectrum
+figure;
+stem(k, abs(X), 'filled');
+xlabel('Frequency index k');
+ylabel('|X(k)|');
+title('Magnitude Spectrum of DFT');
+grid on;
+```
 
 # OUTPUT GRAPH :
+![WhatsApp Image 2026-03-30 at 3 47 35 PM](https://github.com/user-attachments/assets/c1c8a16b-f4e3-4cdc-b326-76cb88bddd0f)
+
 
 # Result :
 Thus, the Discrete Fourier Transform of the given discrete-time signal was successfully computed and plotted using MATLAB.
